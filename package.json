@@ -16,7 +16,7 @@
     "url": "git+https://github.com/mozilla/twemoji-colr.git"
   },
   "dependencies": {
-    "grunt": "^1.4.1",
+    "grunt": "^1.5.3",
     "grunt-cli": "^1.4.3",
     "grunt-webfonts": "^4.0.2",
     "load-grunt-tasks": "^5.1.0",
