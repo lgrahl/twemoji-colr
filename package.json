@@ -20,8 +20,6 @@
     "grunt-cli": "^1.4.3",
     "grunt-webfonts": "^4.0.2",
     "load-grunt-tasks": "^5.1.0",
-    "rmdir": "^1.2.0",
-    "unzip": "^0.1.11",
     "xml2js": "^0.4.23",
     "xmlbuilder": "^15.1.1"
   },
@@ -37,9 +35,10 @@
     "resemblejs": "^4.1.0"
   },
   "scripts": {
-    "grunt": "grunt"
-  },
-  "resolutions": {
-    "graceful-fs": "^4.2.9"
+    "build": "npm run build:clean && npm run build:unzip && npm run build:layerize && npm run build:webfonts",
+    "build:clean": "rm -rf svg build",
+    "build:unzip": "unzip -q -d build/ twe-svg.zip",
+    "build:layerize": "node layerize.js build/svg overrides extras build Twemoji",
+    "build:webfonts": "grunt"
   }
 }
