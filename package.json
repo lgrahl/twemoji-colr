@@ -35,10 +35,12 @@
     "resemblejs": "^4.1.0"
   },
   "scripts": {
-    "build": "npm run build:clean && npm run build:unzip && npm run build:layerize && npm run build:webfonts",
+    "build": "npm run build:clean && npm run build:unzip && npm run build:layerize && npm run build:webfonts && npm run build:ttx && npm run build:woff2",
     "build:clean": "rm -rf svg build",
     "build:unzip": "unzip -q -d build/ twe-svg.zip",
     "build:layerize": "node layerize.js build/svg overrides extras build Twemoji",
+    "build:ttx": "ttx -t name -o build/raw-font/Twemoji.ttf.names build/raw-font/Twemoji.ttf && ttx -m build/raw-font/Twemoji.ttf -o build/raw-font/Twemoji.renamed.ttf build/raw-font/Twemoji.ttf.names && python fixDirection.py build/raw-font/Twemoji.renamed.ttf && ttx -m build/raw-font/Twemoji.renamed.ttf -o build/Twemoji.ttf build/Twemoji.ttx",
+    "build:woff2": "woff2_compress build/Twemoji.ttf",
     "build:webfonts": "grunt"
   }
 }
